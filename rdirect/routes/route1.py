@@ -1,21 +1,18 @@
 from flask import render_template,redirect,url_for,Blueprint,request
-
+from ..utility import utility
 
 
 bp=Blueprint('route1',__name__)
 
     
-# @bp.route('/')
-# def home():
-#         return render_template('base.html')
 @bp.route('/')
+def home():
+        return render_template('base.html',location=utility.redirect_data())
+
 @bp.route('/redirect')
 def rdirect():
         data="no value"
-        with open('.config','r') as f:
-                data=f.read()
-                print(data)
-        
+        data=utility.redirect_data()
         return redirect(data)
 
 @bp.route('/set')
@@ -31,11 +28,7 @@ def setdirect():
 
         print(host,port,key)
 
-        with open('.config','w') as f:
-                f.write(host)
-                if port !=None:
-                        f.write(":"+port)
-                
+        utility.set_redirection(host,port)        
 
         return "Set Successfully to "+host+":"+str(port) 
 

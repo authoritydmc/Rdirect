@@ -1,17 +1,38 @@
 
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Rdirect</title>
+    <script type="text/javascript">
+        var count = 5;
+        var redirect = "/redirect";
+         
+        function countDown(){
+            var timer = document.getElementById("timer");
+            if(count > 0){
+                count--;
+                setTimeout("countDown()", 1000);
+
+                timer.innerHTML =" Redirecting to <a href='{{location}}'> {{location}}</a> in "+(count)+" seconds";
+                
+            
+            }else{
+                window.location.href = redirect;
+            }
+        }
+        window.onload
+        </script>
 </head>
-<body>
-    <h1>Project: rdirect </h1>
-    <h2>Testing / route <h2>
+<body onload="countDown()">
+    <h1>Project: Rdirect </h1>
+    <br>
+    <h2 id="timer"></h2>
+    <br><br>
     <h3> For management Guide goto <a href="https://authoritydmc.github.io/FLASK_BASE_TEMPLATE/" target="_blank">Here</a>
 
-    <h4> Setup by <a href="github.com/authoritydmc">Authoritydmc </a>
+    <h4> Setup by <a href="https://github.com/authoritydmc" target="_blank">Authoritydmc </a>
 </body>
 </html>
     
